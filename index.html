@@ -1,690 +1,507 @@
 <!DOCTYPE html>
-<html lang="cs" class="scroll-smooth">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bc. Martina Břundová | Marketing, Projekty & Cestování</title>
+    <title>Martina Břundová | Portfolio & Cestování</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-cream: #FAF8F5;
-            --bg-card: #FFFFFF;
-            --bg-sand: #F3EFEA;
-            --accent-terracotta: #C86D51;
-            --accent-terracotta-dark: #A8553C;
-            --accent-sage: #4A6B5D;
-            --text-dark: #1E1E1C;
-            --text-muted: #5F5E5A;
-            --border-soft: #E6E1D8;
-            --radius-lg: 24px;
-            --radius-md: 16px;
+            --bg-cream: #FBF9F6;
+            --card-white: #FFFFFF;
+            --terracotta: #C86D51;
+            --terracotta-soft: #F6E6E0;
+            --sage: #5A7668;
+            --sage-soft: #E5EDE9;
+            --ink: #232220;
+            --ink-muted: #66635E;
+            --border: #EAE4DC;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-cream);
-            color: var(--text-dark);
+            color: var(--ink);
             line-height: 1.65;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
-        }
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(250, 248, 245, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-soft);
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: var(--text-dark);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--accent-terracotta);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-terracotta);
+            padding: 2rem 1.25rem 4rem;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1020px;
             margin: 0 auto;
-            padding: 0 24px;
         }
 
-        .hero {
-            padding: 70px 0 60px;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-sand);
-            color: var(--accent-sage);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: 3.4rem;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-
-        .hero h1 em {
-            color: var(--accent-terracotta);
-            font-style: italic;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 32px;
-            max-width: 540px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 13px 26px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.25s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-terracotta);
-            color: #fff;
-            box-shadow: 0 8px 20px rgba(200, 109, 81, 0.25);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-terracotta-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: var(--bg-card);
-            color: var(--text-dark);
-            border: 1px solid var(--border-soft);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent-terracotta);
-            color: var(--accent-terracotta);
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-image-bg {
-            position: absolute;
-            width: 340px;
-            height: 410px;
-            background: var(--bg-sand);
-            border-radius: 180px 180px 24px 24px;
-            transform: rotate(4deg);
-            z-index: 1;
-            border: 1px solid var(--border-soft);
-        }
-
-        .hero-photo {
-            position: relative;
-            z-index: 2;
-            width: 340px;
-            height: 410px;
-            object-fit: cover;
-            border-radius: 180px 180px 24px 24px;
-            box-shadow: 0 20px 40px rgba(30, 30, 28, 0.12);
-            border: 6px solid var(--bg-card);
-            background-color: #e5dfd5;
-        }
-
-        .floating-pill {
-            position: absolute;
-            bottom: 24px;
-            left: 10px;
-            z-index: 3;
-            background: var(--bg-card);
-            padding: 12px 18px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border-soft);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.88rem;
-            font-weight: 600;
-        }
-
-        section {
-            padding: 55px 0;
-        }
-
-        .section-header {
-            margin-bottom: 36px;
-        }
-
-        .section-tag {
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--accent-terracotta);
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .section-header h2 {
-            font-size: 2.3rem;
-            color: var(--text-dark);
-        }
-
+        /* Bento Grid */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            gap: 24px;
+            gap: 1.25rem;
         }
 
         .card {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            border: 1px solid var(--border-soft);
+            background: var(--card-white);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2rem;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(30, 30, 28, 0.05);
+            box-shadow: 0 14px 30px rgba(35, 34, 32, 0.05);
         }
 
-        .col-7 { grid-column: span 7; }
-        .col-5 { grid-column: span 5; }
-        .col-6 { grid-column: span 6; }
-        .col-12 { grid-column: span 12; }
-
-        .card h3 {
-            font-size: 1.45rem;
-            margin-bottom: 14px;
+        /* Hero Section (přes celou šířku bez fotky) */
+        .hero-text {
+            grid-column: span 12;
+            padding: 2.75rem 2.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FAF5F0 100%);
         }
 
-        .travel-card {
-            background: linear-gradient(145deg, #4A6B5D 0%, #365246 100%);
-            color: #FFFFFF;
-            border: none;
-            position: relative;
-            overflow: hidden;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--sage-soft);
+            color: var(--sage);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            width: fit-content;
+            margin-bottom: 1.25rem;
         }
 
-        .travel-card h3 {
-            color: #FFFFFF;
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.6rem, 5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--ink);
         }
 
-        .travel-card p {
-            color: rgba(255, 255, 255, 0.88);
-            margin-bottom: 20px;
+        h1 span {
+            color: var(--terracotta);
+            font-style: italic;
         }
 
-        .travel-pills {
+        .hero-desc {
+            font-size: 1.08rem;
+            color: var(--ink-muted);
+            max-width: 62ch;
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 0.75rem;
         }
 
-        .travel-pill {
+        .btn-primary {
+            background: var(--terracotta);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 0.75rem 1.4rem;
+            border-radius: 12px;
+            transition: background 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: #b35c41;
+        }
+
+        .btn-secondary {
+            background: var(--card-white);
+            color: var(--ink);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 0.75rem 1.4rem;
+            border-radius: 12px;
+            transition: background 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        /* Section Titles */
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--ink);
+        }
+
+        .section-subtitle {
+            color: var(--ink-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Education & Interests */
+        .edu-card {
+            grid-column: span 5;
+            background: var(--sage);
+            color: #fff;
+            border: none;
+        }
+
+        .edu-card h2 {
+            color: #fff;
+        }
+
+        .edu-card p {
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 0.95rem;
+        }
+
+        .edu-tag {
+            display: inline-block;
             background: rgba(255, 255, 255, 0.16);
-            padding: 6px 14px;
-            border-radius: 50px;
+            padding: 0.3rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-top: 1.25rem;
+        }
+
+        .about-card {
+            grid-column: span 7;
+        }
+
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.1rem;
+        }
+
+        .pill {
+            background: var(--bg-cream);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
             font-size: 0.85rem;
             font-weight: 500;
-            backdrop-filter: blur(4px);
+            color: var(--ink);
         }
 
-        .project-role {
-            display: inline-block;
-            background: var(--bg-sand);
-            color: var(--accent-terracotta-dark);
-            font-size: 0.82rem;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 50px;
-            margin-bottom: 12px;
+        /* Projects */
+        .projects-section {
+            grid-column: span 12;
         }
 
-        .project-list {
-            margin-top: 14px;
-            padding-left: 18px;
-            color: var(--text-muted);
-            font-size: 0.94rem;
-        }
-
-        .project-list li {
-            margin-bottom: 6px;
-        }
-
-        .split-grid {
+        .projects-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
         }
 
-        .timeline {
-            position: relative;
-            padding-left: 24px;
-            border-left: 2px solid var(--border-soft);
+        .project-item {
+            background: var(--bg-cream);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.35rem;
         }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 28px;
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -31px;
-            top: 6px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent-terracotta);
-            border: 3px solid var(--bg-cream);
-        }
-
-        .timeline-date {
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--accent-terracotta);
-            margin-bottom: 4px;
+        .project-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--terracotta);
+            margin-bottom: 0.4rem;
             display: block;
         }
 
-        .timeline-title {
+        .project-item h3 {
+            font-size: 1.1rem;
             font-weight: 700;
-            font-size: 1.05rem;
-            color: var(--text-dark);
+            margin-bottom: 0.45rem;
         }
 
-        .timeline-place {
+        .project-item p {
             font-size: 0.9rem;
-            color: var(--accent-sage);
-            font-weight: 600;
-            margin-bottom: 6px;
+            color: var(--ink-muted);
         }
 
-        .timeline-desc {
-            font-size: 0.92rem;
-            color: var(--text-muted);
+        /* Travel Section */
+        .travel-card {
+            grid-column: span 12;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FBF5F2 100%);
         }
 
-        .skills-wrap {
+        .travel-header {
             display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 12px;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .skill-chip {
-            background: var(--bg-sand);
-            color: var(--text-dark);
-            padding: 8px 16px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .contact-banner {
-            background: var(--bg-sand);
-            border-radius: var(--radius-lg);
-            padding: 50px 36px;
-            text-align: center;
-            border: 1px solid var(--border-soft);
-            margin-top: 20px;
-        }
-
-        .contact-banner h2 {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-        }
-
-        .contact-banner p {
-            color: var(--text-muted);
-            max-width: 520px;
-            margin: 0 auto 28px;
-        }
-
-        .contact-cards {
+        .travel-stats {
             display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
+            gap: 1.5rem;
         }
 
-        .contact-item {
-            background: var(--bg-card);
-            padding: 14px 22px;
-            border-radius: 14px;
-            text-decoration: none;
-            color: var(--text-dark);
+        .stat-box strong {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            line-height: 1;
+            color: var(--terracotta);
+        }
+
+        .stat-box span {
+            font-size: 0.8rem;
+            color: var(--ink-muted);
             font-weight: 600;
-            font-size: 0.95rem;
-            border: 1px solid var(--border-soft);
-            transition: all 0.2s;
         }
 
-        .contact-item:hover {
-            border-color: var(--accent-terracotta);
-            color: var(--accent-terracotta);
-            transform: translateY(-2px);
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.9rem;
         }
 
+        .city-tile {
+            background: var(--card-white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.1rem 1.2rem;
+        }
+
+        .city-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.35rem;
+        }
+
+        .city-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--ink);
+        }
+
+        .country-code {
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: var(--terracotta-soft);
+            color: var(--terracotta);
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+        }
+
+        .city-note {
+            font-size: 0.85rem;
+            color: var(--ink-muted);
+        }
+
+        /* Footer */
         footer {
+            grid-column: span 12;
             text-align: center;
-            padding: 36px 20px;
-            color: var(--text-muted);
-            font-size: 0.88rem;
+            padding-top: 1.5rem;
+            color: var(--ink-muted);
+            font-size: 0.85rem;
         }
 
         @media (max-width: 860px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding-top: 40px;
-            }
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-buttons {
-                justify-content: center;
-            }
-            .col-7, .col-5, .col-6 {
+            .edu-card, .about-card {
                 grid-column: span 12;
             }
-            .split-grid {
+            .projects-grid, .cities-grid {
                 grid-template-columns: 1fr;
             }
-            .nav-links {
-                display: none;
+            .hero-text {
+                padding: 2rem;
             }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero-photo, .hero-image-bg { width: 280px; height: 340px; }
         }
     </style>
 </head>
 <body>
-
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">Martina Břundová<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#o-mne">O mně & Cestování</a></li>
-                <li><a href="#projekty">Projekty</a></li>
-                <li><a href="#vzdelani-praxe">Studium & Praxe</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <div class="container">
-        <header class="hero">
-            <div>
-                <div class="hero-badge">✨ Marketingová komunikace • Zlín & Olomoucko</div>
-                <h1>Ahoj, jsem <em>Martina</em>. Tvořím projekty, které mají příběh.</h1>
-                <p>Jsem studentkou magisterského programu Marketingová komunikace na UTB ve Zlíně. Baví mě propojovat lidi, budovat značky, vést týmy a objevovat nová místa i kultury po celém světě.</p>
-                <div class="hero-buttons">
-                    <a href="#kontakt" class="btn btn-primary">Napište mi</a>
-                    <a href="https://www.linkedin.com/in/martina-břundová-ba3449307" target="_blank" class="btn btn-secondary">LinkedIn profil ↗</a>
+        <div class="bento-grid">
+            
+            <!-- Úvodní karta -->
+            <section class="card hero-text">
+                <div class="badge">Marketing • Projekty • Cestování</div>
+                <h1>Ahoj, jsem <span>Martina Břundová</span></h1>
+                <p class="hero-desc">
+                    Studentka marketingových komunikací ve Zlíně se smyslem pro kreativní projekty, organizaci akcí a objevování evropských metropolí. Ráda propojuji lidi, nápady i příběhy z cest.
+                </p>
+                <div class="hero-actions">
+                    <a href="#cestovani" class="btn-primary">Moje cestovatelská mapa</a>
+                    <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="btn-secondary">Spojit se na LinkedIn</a>
                 </div>
-            </div>
+            </section>
 
-            <div class="hero-image-wrapper">
-                <div class="hero-image-bg"></div>
-                <img src="CV picture.png" onerror="this.onerror=null; this.src='fotka.jpg';" alt="Bc. Martina Břundová" class="hero-photo">
-                <div class="floating-pill">
-                    <span>🌍</span>
-                    <span>Cestovatelka & Project Manager</span>
+            <!-- Vzdělání -->
+            <section class="card edu-card">
+                <h2>Vzdělání</h2>
+                <p>
+                    <strong>Univerzita Tomáše Bati ve Zlíně</strong><br>
+                    Fakulta multimediálních komunikací — Marketingové komunikace
+                </p>
+                <span class="edu-tag">Bc. studium • Zlín</span>
+            </section>
+
+            <!-- O mně / Zájmy -->
+            <section class="card about-card">
+                <h2>Co mě baví & naplňuje</h2>
+                <p style="color: var(--ink-muted); font-size: 0.95rem;">
+                    Mimo školní lavice mě nejčastěji potkáte při přípravě neziskových a kulturních projektů, v mezinárodní studentské komunitě nebo s batohem na letišti při plánování další cesty po Evropě.
+                </p>
+                <div class="pill-list">
+                    <span class="pill">Kreativní komunikace</span>
+                    <span class="pill">Event management</span>
+                    <span class="pill">Mezinárodní komunita</span>
+                    <span class="pill">City-breaky & kultura</span>
+                    <span class="pill">Tvorba obsahu</span>
                 </div>
-            </div>
-        </header>
+            </section>
 
-        <section id="o-mne">
-            <div class="section-header">
-                <span class="section-tag">Kdo jsem</span>
-                <h2>Komunikace, organizace a chuť objevovat</h2>
-            </div>
-
-            <div class="bento-grid">
-                <div class="card col-7">
-                    <h3>Můj přístup k práci a životu</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 14px;">
-                        Během studia na Fakultě multimediálních komunikací UTB jsem zjistila, že mě nejvíce naplňuje práce, kde vidím reálný dopad – od správy sociálních sítí a tvorby kampaní až po kompletní vedení studentského týmu.
-                    </p>
-                    <p style="color: var(--text-muted);">
-                        Díky dlouholetým zkušenostem v zákaznickém servisu i mezinárodnímu prostředí studentské organizace <strong>ESN Zlín</strong> dokážu jednat s lidmi s empatií, klidem a přirozenou energií.
-                    </p>
-                    <div class="skills-wrap" style="margin-top: 22px;">
-                        <span class="skill-chip">🇨🇿 Čeština (rodilý mluvčí)</span>
-                        <span class="skill-chip">🇬🇧 Angličtina (C1)</span>
-                        <span class="skill-chip">🇪🇸 Španělština (A2)</span>
-                        <span class="skill-chip">🚗 Řidičský průkaz sk. B</span>
+            <!-- Projekty (bez pracovní historie) -->
+            <section class="card projects-section">
+                <h2>Studentské & komunitní projekty</h2>
+                <p class="section-subtitle">Výběr projektů a iniciativ, na kterých jsem se podílela během studia.</p>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <span class="project-tag">Neziskový projekt</span>
+                        <h3>Němá tvář</h3>
+                        <p>Komunikace, osvěta a podpora smysluplného projektu zaměřeného na pomoc zvířatům.</p>
+                    </div>
+                    <div class="project-item">
+                        <span class="project-tag">Kulturní festival</span>
+                        <h3>Culturea</h3>
+                        <p>Spolupráce na organizaci a propagaci cestovatelského a kulturního festivalu pod hlavičkou FMK UTB.</p>
+                    </div>
+                    <div class="project-item">
+                        <span class="project-tag">Mezinárodní prostředí</span>
+                        <h3>ESN Zlín</h3>
+                        <p>Podpora zahraničních studentů, organizace komunitních akcí a mezikulturní komunikace v angličtině.</p>
                     </div>
                 </div>
+            </section>
 
-                <div class="card col-5 travel-card">
-                    <h3>✈️ Cestování & Poznávání</h3>
-                    <p>
-                        Cestování pro mě není jen odpočinek, ale největší zdroj inspirace. Ráda poznávám místní kulturu, tradice a gastronomii, což se propsalo i do mé práce na cestovatelském festivalu <strong>Culturea</strong> nebo při organizaci akcí pro zahraniční studenty v <strong>ESN</strong>.
-                    </p>
-                    <div class="travel-pills">
-                        <span class="travel-pill">🗺️ Objevování nových míst</span>
-                        <span class="travel-pill">📚 Knihy v angličtině</span>
-                        <span class="travel-pill">🎬 Filmy & seriály</span>
-                        <span class="travel-pill">🎲 Deskové hry</span>
+            <!-- Cestování -->
+            <section class="card travel-card" id="cestovani">
+                <div class="travel-header">
+                    <div>
+                        <h2>Evropa v mých stopách</h2>
+                        <p class="section-subtitle" style="margin-bottom: 0;">Města, která mě inspirovala svou atmosférou, architekturou a kulturou.</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projekty">
-            <div class="section-header">
-                <span class="section-tag">Co mám za sebou</span>
-                <h2>Marketingové a PR projekty</h2>
-            </div>
-
-            <div class="bento-grid">
-                <div class="card col-6">
-                    <span class="project-role">03/2024 – 06/2025 • FMK UTB ve Zlíně</span>
-                    <h3>Němá tvář (Speechless Animal)</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">
-                        Studentský nekomerční PR projekt zaměřený na osvětu o problematice opuštěných zvířat, podporu útulků a vzdělávací akce pro veřejnost.
-                    </p>
-                    <ul class="project-list">
-                        <li><strong>Projektová manažerka (09/2024 – 06/2025):</strong> Kompletní vedení a koordinace všech sekcí celého projektu.</li>
-                        <li><strong>Členka fundraisingové sekce (03/2024 – 06/2024):</strong> Oslovování partnerů a zajišťování podpory.</li>
-                    </ul>
-                </div>
-
-                <div class="card col-6">
-                    <span class="project-role">09/2023 – 06/2025 • FMK UTB ve Zlíně</span>
-                    <h3>Festival Culturea</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">
-                        Cestovatelský a kulturní festival pořádaný studenty, který veřejnosti přibližuje atmosféru, zvyky a kulturu vybraných zahraničních zemí.
-                    </p>
-                    <ul class="project-list">
-                        <li><strong>Manažerka propagační sekce (09/2024 – 06/2025):</strong> Strategie a správa sociálních sítí, online i offline propagace festivalu.</li>
-                        <li><strong>Členka propagační sekce (09/2023 – 06/2024):</strong> Tvorba obsahu a podpora kampaní.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="vzdelani-praxe">
-            <div class="section-header">
-                <span class="section-tag">Cesta & Zkušenosti</span>
-                <h2>Vzdělání a pracovní praxe</h2>
-            </div>
-
-            <div class="split-grid">
-                <div>
-                    <h3 style="margin-bottom: 24px; font-size: 1.5rem;">🎓 Vzdělání a dobrovolnictví</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <span class="timeline-date">07/2026 – současnost</span>
-                            <div class="timeline-title">Magisterský program – Marketingová komunikace</div>
-                            <div class="timeline-place">Univerzita Tomáše Bati ve Zlíně</div>
+                    <div class="travel-stats">
+                        <div class="stat-box">
+                            <strong>9</strong>
+                            <span>oblíbených měst</span>
                         </div>
-
-                        <div class="timeline-item">
-                            <span class="timeline-date">07/2023 – 05/2026</span>
-                            <div class="timeline-title">Bakalářský program (Bc.) – Marketingová komunikace</div>
-                            <div class="timeline-place">Univerzita Tomáše Bati ve Zlíně</div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <span class="timeline-date">10/2025 – současnost</span>
-                            <div class="timeline-title">Aktivní členka – Erasmus Student Network (ESN)</div>
-                            <div class="timeline-place">ESN Zlín</div>
-                            <p class="timeline-desc">Příprava volnočasových aktivit, akcí a podpora zahraničních studentů přijíždějících na Erasmus.</p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <span class="timeline-date">09/2019 – 06/2023</span>
-                            <div class="timeline-title">Středoškolské vzdělání s maturitou</div>
-                            <div class="timeline-place">Slovanské gymnázium Olomouc</div>
+                        <div class="stat-box">
+                            <strong>6</strong>
+                            <span>evropských zemí</span>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <h3 style="margin-bottom: 24px; font-size: 1.5rem;">💼 Pracovní zkušenosti</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <span class="timeline-date">09/2026 – současnost</span>
-                            <div class="timeline-title">Zástupce zákaznického servisu</div>
-                            <div class="timeline-place">Sinsay (LPP Czech Republic, s.r.o.) • Mohelnice</div>
-                            <p class="timeline-desc">Pokladní operace, vyřizování vratek a výdej online objednávek, vizuální prezentace prodejny.</p>
+                <div class="cities-grid">
+                    <div class="city-tile">
+                        <div class="city-top">
+                            <span class="city-name">Londýn</span>
+                            <span class="country-code">UK</span>
                         </div>
+                        <p class="city-note">Kosmopolitní energie, muzea zdarma, procházky podél Temže a jedinečné čtvrti od Notting Hillu po Soho.</p>
+                    </div>
 
-                        <div class="timeline-item">
-                            <span class="timeline-date">07/2019 – současnost</span>
-                            <div class="timeline-title">Zástupce zákaznického servisu</div>
-                            <div class="timeline-place">Deichmann-obuv s.r.o. • Mohelnice (do 06/2026) & Uničov (od 07/2026)</div>
-                            <p class="timeline-desc">Dlouhodobá péče o zákazníky, správa zásob, pokladní operace a reprezentativní vzhled prodejny.</p>
+                    <div class="city-tile">
+                        <div class="city-top">
+                            <span class="city-name">Amsterdam</span>
+                            <span class="country-code">NL</span>
                         </div>
+                        <p class="city-note">Síť vodních kanálů, cihlové domy, galerie umění a nezaměnitelná cyklistická atmosféra.</p>
+                    </div>
 
-                        <div class="timeline-item">
-                            <span class="timeline-date">10/2025 – 01/2026</span>
-                            <div class="timeline-title">Komunikační koordinátorka (stáž)</div>
-                            <div class="timeline-place">Erasmus Student Network Zlín, z.s. • Zlín</div>
-                            <p class="timeline-desc">Tvorba obsahu pro sociální sítě a fotografická dokumentace studentských akcí.</p>
+                    <div class="city-tile">
+                        <div class="city-top">
+                            <span class="city-name">Paříž</span>
+                            <span class="country-code">FR</span>
                         </div>
+                        <p class="city-note">Kavárenská kultura, večerní výhledy na město, galerie a toulky historickými uličkami Montmartru.</p>
+                    </div>
 
-                        <div class="timeline-item">
-                            <span class="timeline-date">11/2025 – 03/2026</span>
-                            <div class="timeline-title">Skladový pracovník</div>
-                            <div class="timeline-place">INDEX NOSLUŠ s.r.o. (Zásilkovna) • Zlín</div>
-                            <p class="timeline-desc">Efektivní třídění, zpracování a expedice velkého objemu e-commerce zásilek.</p>
+                    <div class="city-tile">
+                        <div class="city-top">
+                            <span class="city-name">Budapešť</span>
+                            <span class="country-code">HU</span>
                         </div>
+                        <p class="city-note">Monumentální architektura u Dunaje, termální lázně, vyhlídky z Rybářské bašty a večerní atmosféra.</p>
+                    </div>
 
-                        <div class="timeline-item">
-                            <span class="timeline-date">01/2024 – 02/2024</span>
-                            <div class="timeline-title">Pracovník v občerstvení</div>
-                            <div class="timeline-place">UGO Trade s.r.o. • Zlín</div>
-                            <p class="timeline-desc">Příprava a servis čerstvých ovocných šťáv a smoothies.</p>
+                    <div class="city-tile">
+                        <div class="city-top">
+                            <span class="city-name">Gdaňsk</span>
+                            <span class="country-code">PL</span>
                         </div>
+                        <p class="city-note">Barevné štíty historického přístavu, vůně Baltského moře a pohodová přímořská atmosféra.</p>
+                    </div>
+
+                    <div class="city-tile">
+                        <div class="city-top">
+                            <span class="city-name">Varšava</span>
+                            <span class="country-code">PL</span>
+                        </div>
+                        <p class="city-note">Fascinující kontrast moderních mrakodrapů, pečlivě obnoveného Starého Města a královských parků.</p>
+                    </div>
+
+                    <div class="city-tile">
+                        <div class="city-top">
+                            <span class="city-name">Krakov</span>
+                            <span class="country-code">PL</span>
+                        </div>
+                        <p class="city-note">Historické srdce Polska, královský Wawel, židovská čtvrť Kazimierz a skvělá gastronomie.</p>
+                    </div>
+
+                    <div class="city-tile">
+                        <div class="city-top">
+                            <span class="city-name">Vídeň</span>
+                            <span class="country-code">AT</span>
+                        </div>
+                        <p class="city-note">Císařská elegance, galerie světového formátu, zahradní komplexy a tradiční vídeňské kavárny.</p>
+                    </div>
+
+                    <div class="city-tile">
+                        <div class="city-top">
+                            <span class="city-name">Praha</span>
+                            <span class="country-code">CZ</span>
+                        </div>
+                        <p class="city-note">Stověžatá klasika, ranní procházky přes Karlův most, vyhlídky z Letné a nekonečně zákoutí k objevování.</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="kontakt">
-            <div class="contact-banner">
-                <h2>Spojme se</h2>
-                <p>Hledáte posilu do marketingového týmu, parťáka na projekt nebo si jen chcete popovídat o cestování? Ozvěte se mi.</p>
-                <div class="contact-cards">
-                    <a href="mailto:m_brundova@utb.cz" class="contact-item">📧 m_brundova@utb.cz</a>
-                    <a href="tel:+420702543033" class="contact-item">📞 +420 702 543 033</a>
-                    <a href="https://www.linkedin.com/in/martina-břundová-ba3449307" target="_blank" class="contact-item">💼 LinkedIn</a>
-                </div>
-            </div>
-        </section>
+            <footer>
+                © 2026 Martina Břundová • martinabrundova.fun
+            </footer>
+
+        </div>
     </div>
-
-    <footer>
-        <p>© 2026 Bc. Martina Břundová • Vytvořeno pro martinabrundova.fun</p>
-    </footer>
-
 </body>
 </html>
