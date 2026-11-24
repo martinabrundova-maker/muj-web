@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Martina Břundová | Portfolio & Cestování</title>
+
+    <!-- 1. Výchozí nastavení souhlasu (Consent Mode v2 - před kliknutím zamítnuto) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+    </script>
+
+    <!-- 2. Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PNWQXF0N1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4PNWQXF0N1');
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -325,6 +348,12 @@
             font-size: 0.85rem;
         }
 
+        footer a {
+            color: var(--ink-muted);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
         @media (max-width: 860px) {
             .edu-card, .about-card {
                 grid-column: span 12;
@@ -380,7 +409,7 @@
                 </div>
             </section>
 
-            <!-- Projekty (bez pracovní historie) -->
+            <!-- Projekty -->
             <section class="card projects-section">
                 <h2>Studentské & komunitní projekty</h2>
                 <p class="section-subtitle">Výběr projektů a iniciativ, na kterých jsem se podílela během studia.</p>
@@ -498,10 +527,47 @@
             </section>
 
             <footer>
-                © 2026 Martina Břundová • martinabrundova.fun
+                © 2026 Martina Břundová • martinabrundova.fun • <a onclick="resetCookieConsent()">Nastavení cookies</a>
             </footer>
 
         </div>
     </div>
+
+    <!-- Cookie lišta (Google Consent Mode v2) -->
+    <div id="cookie-banner" style="display:none; position:fixed; bottom:20px; left:20px; right:20px; max-width:540px; margin:0 auto; background:#232220; color:#fff; padding:1.25rem 1.5rem; border-radius:16px; box-shadow:0 12px 30px rgba(0,0,0,0.22); z-index:9999; font-family:inherit; font-size:0.9rem;">
+      <p style="margin-bottom:0.9rem; line-height:1.5;">
+        Tento web používá analytické cookies (Google Analytics) ke zjištění návštěvnosti. Souhlasíte s jejich použitím?
+      </p>
+      <div style="display:flex; gap:0.6rem; justify-content:flex-end;">
+        <button onclick="setCookieConsent('denied')" style="background:transparent; color:#ccc; border:1px solid #555; padding:0.5rem 1rem; border-radius:8px; cursor:pointer;">Odmítnout</button>
+        <button onclick="setCookieConsent('granted')" style="background:#C86D51; color:#fff; border:none; padding:0.5rem 1.1rem; border-radius:8px; font-weight:600; cursor:pointer;">Povolit vše</button>
+      </div>
+    </div>
+
+    <script>
+      function setCookieConsent(choice) {
+        localStorage.setItem('ga_consent', choice);
+        document.getElementById('cookie-banner').style.display = 'none';
+        if (choice === 'granted') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        } else {
+          gtag('consent', 'update', { 'analytics_storage': 'denied' });
+        }
+      }
+
+      function resetCookieConsent() {
+        localStorage.removeItem('ga_consent');
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+
+      window.addEventListener('DOMContentLoaded', function() {
+        const saved = localStorage.getItem('ga_consent');
+        if (!saved) {
+          document.getElementById('cookie-banner').style.display = 'block';
+        } else if (saved === 'granted') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+      });
+    </script>
 </body>
 </html>
