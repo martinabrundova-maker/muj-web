@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Martina Břundová | Portfolio & Cestování</title>
 
-    <!-- 1. Výchozí nastavení souhlasu (Consent Mode v2 - před kliknutím zamítnuto) -->
+    <!-- 1. Výchozí nastavení souhlasu (Consent Mode v2 - opt-in: před kliknutím vše zamítnuto) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -14,7 +14,8 @@
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
         'ad_personalization': 'denied',
-        'analytics_storage': 'denied'
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
       });
     </script>
 
@@ -24,7 +25,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-4PNWQXF0N1');
+      gtag('config', 'G-4PNWQXF0N1', { 'anonymize_ip': true });
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -354,6 +355,128 @@
             cursor: pointer;
         }
 
+        /* Cookie Banner & Legal Modal */
+        .cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #232220;
+            color: #FBF9F6;
+            padding: 1.4rem 1.6rem;
+            border-radius: 18px;
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+            z-index: 9998;
+            font-size: 0.88rem;
+        }
+
+        .cookie-banner strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+            color: #FFFFFF;
+        }
+
+        .cookie-banner p {
+            color: #D8D4CE;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .cookie-banner a {
+            color: #F6E6E0;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .cookie-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            justify-content: flex-end;
+        }
+
+        /* Rovnocenná tlačítka dle požadavků ÚOOÚ / GDPR */
+        .btn-cookie {
+            flex: 1 1 140px;
+            background: var(--terracotta);
+            color: #FFFFFF;
+            border: 1px solid var(--terracotta);
+            padding: 0.6rem 1.1rem;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-cookie:hover {
+            opacity: 0.9;
+        }
+
+        .privacy-modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(35, 34, 32, 0.6);
+            z-index: 9999;
+            padding: 1.25rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .privacy-modal {
+            background: var(--card-white);
+            color: var(--ink);
+            max-width: 620px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .privacy-modal h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .privacy-modal h4 {
+            font-size: 0.95rem;
+            margin: 1rem 0 0.3rem;
+            color: var(--terracotta);
+        }
+
+        .privacy-modal p, .privacy-modal li {
+            font-size: 0.88rem;
+            color: var(--ink-muted);
+            line-height: 1.55;
+        }
+
+        .privacy-modal ul {
+            padding-left: 1.2rem;
+            margin-top: 0.3rem;
+        }
+
+        .modal-close {
+            margin-top: 1.4rem;
+            background: var(--ink);
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.3rem;
+            border-radius: 10px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
         @media (max-width: 860px) {
             .edu-card, .about-card {
                 grid-column: span 12;
@@ -551,24 +674,60 @@
             </section>
 
             <footer>
-                © 2026 Martina Břundová • martinabrundova.fun • <a onclick="resetCookieConsent()">Nastavení cookies</a>
+                © 2026 Martina Břundová • martinabrundova.fun • 
+                <a onclick="openPrivacyModal()">Zásady cookies a soukromí</a> • 
+                <a onclick="resetCookieConsent()">Změnit nastavení cookies</a>
             </footer>
 
         </div>
     </div>
 
-    <!-- Cookie lišta (Google Consent Mode v2) -->
-    <div id="cookie-banner" style="display:none; position:fixed; bottom:20px; left:20px; right:20px; max-width:540px; margin:0 auto; background:#232220; color:#fff; padding:1.25rem 1.5rem; border-radius:16px; box-shadow:0 12px 30px rgba(0,0,0,0.22); z-index:9999; font-family:inherit; font-size:0.9rem;">
-      <p style="margin-bottom:0.9rem; line-height:1.5;">
-        Tento web používá analytické cookies (Google Analytics) ke zjištění návštěvnosti. Souhlasíte s jejich použitím?
+    <!-- Cookie lišta v souladu s českou legislativou (opt-in) a doporučením ÚOOÚ -->
+    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Nastavení souborů cookies">
+      <strong>Nastavení souborů cookies</strong>
+      <p>
+        Pro zlepšování tohoto osobního webu a měření jeho návštěvnosti využívám analytické soubory cookies (služba Google Analytics 4). Analytické cookies se aktivují až po vašem dobrovolném souhlasu, který můžete kdykoliv odvolat. Více informací najdete v <a onclick="openPrivacyModal()">Zásadách cookies a ochrany soukromí</a>.
       </p>
-      <div style="display:flex; gap:0.6rem; justify-content:flex-end;">
-        <button onclick="setCookieConsent('denied')" style="background:transparent; color:#ccc; border:1px solid #555; padding:0.5rem 1rem; border-radius:8px; cursor:pointer;">Odmítnout</button>
-        <button onclick="setCookieConsent('granted')" style="background:#C86D51; color:#fff; border:none; padding:0.5rem 1.1rem; border-radius:8px; font-weight:600; cursor:pointer;">Povolit vše</button>
+      <div class="cookie-actions">
+        <button type="button" class="btn-cookie" onclick="setCookieConsent('denied')">Odmítnout vše</button>
+        <button type="button" class="btn-cookie" onclick="setCookieConsent('granted')">Povolit vše</button>
+      </div>
+    </div>
+
+    <!-- Modální okno s informacemi o zpracování údajů a cookies -->
+    <div id="privacy-modal" class="privacy-modal-backdrop" onclick="if(event.target===this) closePrivacyModal()">
+      <div class="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+        <h3 id="privacy-title">Zásady používání cookies a ochrany soukromí</h3>
+        <p><strong>Provozovatel a správce webu:</strong> Martina Břundová, provozovatelka osobního portfolia na doméně <em>martinabrundova.fun</em>.</p>
+
+        <h4>1. Jaké soubory cookies web používá</h4>
+        <ul>
+          <li><strong>Nezbytné technické uložení (localStorage):</strong> Slouží výhradně k zapamatování vaší volby ohledně souhlasu s cookies (klíč <code>ga_consent</code>), aby se vám lišta nezobrazovala při každém načtení stránky.</li>
+          <li><strong>Analytické cookies (Google Analytics 4):</strong> Ukládají se <strong>pouze na základě vašeho aktivního souhlasu</strong> (kliknutím na „Povolit vše“). Slouží ke statistickému vyhodnocení návštěvnosti webu (např. počet zobrazení stránek, typ zařízení, přibližná lokalita).</li>
+        </ul>
+
+        <h4>2. Zpracovatel a předávání dat</h4>
+        <p>Analytická data zpracovává společnost <strong>Google Ireland Limited / Google LLC</strong> (USA) v rámci certifikovaného mechanismu <em>EU-U.S. Data Privacy Framework</em>. Adresy IP jsou anonymizovány.</p>
+
+        <h4>3. Jak souhlas odvolat a smazat cookies</h4>
+        <p>Svůj souhlas můžete kdykoliv vzít zpět nebo změnit kliknutím na odkaz <strong>„Změnit nastavení cookies“</strong> v patičce této stránky, případně smazáním souborů cookies v nastavení vašeho prohlížeče.</p>
+
+        <button type="button" class="modal-close" onclick="closePrivacyModal()">Zavřít</button>
       </div>
     </div>
 
     <script>
+      function clearAnalyticsCookies() {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const name = cookies[i].split('=')[0].trim();
+          if (name.startsWith('_ga') || name.startsWith('_gid') || name.startsWith('_gat')) {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + location.hostname;
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          }
+        }
+      }
+
       function setCookieConsent(choice) {
         localStorage.setItem('ga_consent', choice);
         document.getElementById('cookie-banner').style.display = 'none';
@@ -576,12 +735,23 @@
           gtag('consent', 'update', { 'analytics_storage': 'granted' });
         } else {
           gtag('consent', 'update', { 'analytics_storage': 'denied' });
+          clearAnalyticsCookies();
         }
       }
 
       function resetCookieConsent() {
         localStorage.removeItem('ga_consent');
+        clearAnalyticsCookies();
+        gtag('consent', 'update', { 'analytics_storage': 'denied' });
         document.getElementById('cookie-banner').style.display = 'block';
+      }
+
+      function openPrivacyModal() {
+        document.getElementById('privacy-modal').style.display = 'flex';
+      }
+
+      function closePrivacyModal() {
+        document.getElementById('privacy-modal').style.display = 'none';
       }
 
       window.addEventListener('DOMContentLoaded', function() {
